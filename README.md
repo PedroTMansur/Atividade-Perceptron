@@ -25,7 +25,9 @@ for teste in testes:
 
 # Parte 2
 
-from sklearn.linear_model import Perceptron
+from sklearn.linear_model 
+
+import Perceptron
 
 X = [
     [0, 0, 0],  
@@ -53,3 +55,46 @@ for teste in X:
     ir_ao_parque = 'Sim' if previsao[0] == 1 else 'Não'
     
     print(f"Tempo ensolarado: {teste[0]}, Dia da semana: {teste[1]}, Parque lotado: {teste[2]} => Ir ao parque? {ir_ao_parque}")
+
+# Parte 3
+
+from sklearn.linear_model 
+
+import Perceptron
+
+X = [
+    [1, 1, 1, 1],  
+    [0, 1, 1, 0],  
+    [1, 0, 1, 1],  
+    [0, 0, 0, 0],  
+    [1, 1, 0, 1],  
+    [0, 1, 0, 1],  
+    [1, 1, 1, 0],  
+    [0, 0, 1, 1],  
+]
+
+
+y = [1, 0, 1, 0, 0, 0, 1, 0]
+
+modelo = Perceptron()
+
+modelo.fit(X, y)
+
+def decidir_o_que_comer(cansado, tem_ingredientes, restaurante_aberto, dia_pagamento):
+  
+    previsao = modelo.predict([[cansado, tem_ingredientes, restaurante_aberto, dia_pagamento]])
+    
+    if previsao[0] == 1:
+        return "Comer fora"
+    else:
+        return "Cozinhar em casa"
+
+print("Decisão para comer:")
+
+for teste in X:
+
+    cansado, tem_ingredientes, restaurante_aberto, dia_pagamento = teste
+    
+    decisao = decidir_o_que_comer(cansado, tem_ingredientes, restaurante_aberto, dia_pagamento)
+    
+    print(f"Cansado: {cansado}, Tem ingredientes: {tem_ingredientes}, Restaurante aberto: {restaurante_aberto}, Dia de pagamento: {dia_pagamento} => {decisao}")
